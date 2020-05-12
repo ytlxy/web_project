@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class productController {
-    //查询商品
+    //查询商品  //暂时无法跳转
     @RequestMapping("commodity")
     public ModelAndView commodity(Model model,product pReduct){
         ModelAndView mod=new ModelAndView("commodity");
