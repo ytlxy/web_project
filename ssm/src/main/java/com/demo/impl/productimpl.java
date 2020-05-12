@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service("productImpl")
 public class productimpl {
-    public static List<product> select(){
-        List<product> a= mybatisutli.getSqlSession().getMapper(productmp.class).select2();
+    public static List<product> select(product product){
+        List<product> a= mybatisutli.getSqlSession().getMapper(productmp.class).select2(product);
         mybatisutli.getSqlSession().commit();
         mybatisutli.close();
         return a;

@@ -6,7 +6,6 @@ import com.demo.util.mybatisutli;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service("transactionImpl")
 public class transactionimpl {
     public static List<transaction> select(){
