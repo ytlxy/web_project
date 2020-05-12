@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.empmp">
+    <cache eviction="FIFO" flushInterval="200" readOnly="true" type="com.demo.util.MyBatisRedisCache"/>
+    <sql id="sa">
+        empno,ename,esex,etext
+        </sql>
+    <insert id="insert1" parameterType="com.demo.pojo.emp" useGeneratedKeys="true" keyProperty="empno">
+        insert into emp (<include refid="sa"/>)
+        values (#{empno},#{ename},#{esex},#{etext})
+    </insert>
+    <select id="select1" parameterType="int" resultType="com.demo.pojo.emp">
+        SELECT * FROM emp;
+        </select>
+    <delete id="delete1" parameterType="com.demo.pojo.emp">
+        delete from emp where empno=#{empno};
+        </delete>
+    <update id="update1" parameterType="com.demo.pojo.emp">
+        update emp set ename=#{ename},esex=#{esex},etext=#{etext} where empno=#{empno}
+        </update>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.transactionmp">
+    <cache eviction="FIFO" flushInterval="200" readOnly="true" type="com.demo.util.MyBatisRedisCache"/>
+    <sql id="pr">
+        ID,Userid,Productid
+    </sql>
+    <insert id="insert3" parameterType="com.demo.pojo.transaction" useGeneratedKeys="true" keyProperty="ID">
+        insert into transaction (<include refid="pr"/>)
+        values (#{ID},#{Userid},#{Productid})
+    </insert>
+    <select id="select3" resultType="com.demo.pojo.transaction">
+        SELECT * FROM transaction;
+    </select>
+    <delete id="delete3" parameterType="com.demo.pojo.transaction">
+        delete from transaction where ID=#{ID};
+    </delete>
+    <update id="update3" parameterType="com.demo.pojo.transaction">
+        update transaction set Userid=#{Userid},Productid=#{Productid} where ID=#{ID};
+    </update>
+    <select id="selectuser" resultType="com.demo.pojo.transaction">
+        select Userid,Productid,ID from transaction WHERE Userid=#{Userid} and Productid=#{Productid} and ID;
+    </select>
+
+</mapper>
