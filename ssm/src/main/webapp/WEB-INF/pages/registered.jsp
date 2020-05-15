@@ -16,8 +16,9 @@
     <h1>用户注册</h1><br/>
     账户：<input type="text" name="Userid"><br/>
     密码：<input type="password" name="Productid"><br/>
-    <h1>  </h1><br/>
+    <br/>
     <input type="submit" value="提交">
+    <a href="/user/tologin">返回登陆</a>
 </form>
 </center>
 </body>
