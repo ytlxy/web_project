@@ -7,14 +7,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
+@RequestMapping("/product")
 public class productController {
-    //查询商品  //暂时无法跳转
-    @RequestMapping("commodity")
-    public ModelAndView commodity(Model model,product pReduct){
+    //添加商品
+    @RequestMapping("/commodityAdd")
+    public ModelAndView commodityAdd(Model model,String name,String Catalog){
         ModelAndView mod=new ModelAndView("commodity");
-        mod.addObject("merchandise",productimpl.select(pReduct));
+        product pr=new product();
+        pr.setProductName(name);
+        pr.setCatalog(Catalog);
+        productimpl.insert(pr);
+        mod.addObject("merchandise","添加内容:"+pr);
         return mod;
     }
-    //添加商品
+    //查询目录下商品
+    @RequestMapping("/commodityInquiry")
+    public ModelAndView commodityInquiry(Model model,String Catalog){
+        ModelAndView mod=new ModelAndView("commodity");
+        product pr=new product();
+        pr.setCatalog(Catalog);
+        List<product> a=productimpl.select(pr);
+        mod.addObject("merchandisest",a);
+        return mod;
+    }
 }

@@ -34,6 +34,7 @@
         </c:forEach>
     </form>
 </h3>
+    <a href="/user/commodity">前往商品页面</a>
 </center>
 </body>
 </html>
